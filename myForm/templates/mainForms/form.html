@@ -1,0 +1,18 @@
+{% extends "mainForms/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<form method="post" class="p-5">
+    {% csrf_token %}
+
+
+    <!-- *name -->
+    {{  form.non_field_errors }}
+    <div class="form-group">
+        <div class="col-md-6 mb-0 ">
+            {{ form | crispy}}
+        </div>
+    </div>
+    <button class="btn btn-outline-primary form-group ml-3 mb-0" type="submit"> Post
+    </button>
+</form>
+{% endblock %}

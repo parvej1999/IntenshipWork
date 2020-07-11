@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+  <!-- font awesome -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <style>
+    body,
+    html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+    }
+
+    div li {
+      text-decoration: none;
+      list-style-type: none;
+      margin-left: 2rem;
+      margin-right: 0rem;
+      line-height: 2rem;
+    }
+
+    .sidebar {
+      position: fixed;
+    }
+
+    .menu li {
+      margin-left: 3rem;
+    }
+
+    #collapsemenu {
+      margin-left: 1rem;
+    }
+
+    .row .sidebar {
+      margin-top: 10rem;
+      height: 100%;
+    }
+
+
+    .auth li {
+      margin-left: 3rem;
+    }
+  </style>
+
+  <title>Hello, world!</title>
+</head>
+
+<body>
+  <div class="row no-gutters">
+    <div class="col-md-2 side-bord border-right">
+      <div class="sidebar">
+        <li><b><i class="fa fa-home"></i>Dashboard</b></li>
+        <li>
+          <hr>
+        </li>
+        <br>
+        <li><b>COMPONENT</b></li>
+        <div class="menu">
+          <li>
+            <a class="text-muted dropdown-toggle" data-toggle="collapse" href="#collapsemenu" role="button"
+              aria-expanded="false" aria-controls="collapsemenu">
+              Incidents
+            </a>
+          </li>
+          </p>
+          <div class="collapse" id="collapsemenu">
+            <li>
+              <a class="text-muted " href="#">Report An
+                Incident</a><br>
+              <a class="text-muted " href="#">Sent Incident</a><br>
+              <a class="text-muted " href="#">Incident List</a><br>
+            </li>
+          </div>
+          <li class="text-muted ">Others</li>
+        </div>
+        <br>
+        <br>
+
+        <li><b>AUTHENTICATION</b></li>
+
+        <div class="auth">
+          <li class='text-muted'>Logout</li>
+          <br>
+          <li class='text-muted'>Register</li>
+
+        </div>
+      </div>
+
+    </div>
+
+    <div class="col-md-10 border-left">
+      <div class="main border-bottom bg-light">
+        <table class="table table-borderless">
+          <tbody>
+            <tr>
+              <td></td>
+            </tr>
+            <tr>
+              <td>
+                <nav class="navbar navbar-expand-lg navbar-light">
+                  <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+
+                  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                      <li class="nav-item active">
+                        <a class="nav-link" href="#"><i class="far fa-bell"></i> <span
+                            class="sr-only">(current)</span></a>
+                      </li>
+                      <li class="nav-item ml-4">
+                        <a class="nav-link" href="#">Link</a>
+                      </li>
+                      <li class="nav-item shadow-sm rounded-pill bg-white pl-4 pr-4 ml-4 dropdown">
+                        <a class="nav-link dropdown-toggle" a href="#" id="navbarDropdown" data-toggle="dropdown"
+                          aria-haspopup="true" aria-expanded="false">
+                          EN
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                          <a class="dropdown-item" href="#">#</a>
+                          <a class="dropdown-item" href="#">#</a>
+                      </li>
+                    </ul>
+                    <form class="form-inline my-2 my-lg-0">
+                      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    </form>
+                  </div>
+                  <hr>
+                </nav>
+              </td>
+            </tr>
+
+          </tbody>
+
+        </table>
+      </div>
+
+      {% block content %}
+
+      {% endblock %}
+    </div>
+
+
+  </div>
+</body>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+  integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+  integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+  integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+
+</html>
