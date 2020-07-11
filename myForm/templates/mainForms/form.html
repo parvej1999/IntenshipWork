@@ -12,7 +12,11 @@
             {{ form | crispy}}
         </div>
     </div>
-    <button class="btn btn-outline-primary form-group ml-3 mb-0" type="submit"> Post
+    &nbsp<label for="reported-by">Reported By: &nbsp&nbsp</label>
+    <label for="reported-by">{{user.username}}</label>
+    <br>
+
+    <button class="btn btn-outline-primary form-group ml-3 mb-0" type="submit"> submit
     </button>
 </form>
 {% endblock %}

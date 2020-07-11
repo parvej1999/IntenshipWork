@@ -9,13 +9,15 @@ from django.contrib.auth.decorators import login_required
 
 
 @login_required
+def dashboard(request):
+    return render(request, 'mainForms/dashboard.html')
+
+
+@login_required
 def displayForm(request):
     if request.method == 'POST':
-        print('in POst')
         form = reportForm(request.POST)
-        print('before is valid')
         if form.is_valid():
-            print('afer is valid')
             formData = myForm(
                 Location=form.cleaned_data.get('Location'),
                 Incident_desc=form.cleaned_data.get('Incident_desc'),
@@ -28,9 +30,7 @@ def displayForm(request):
                 incident_type=form.cleaned_data.get('incident_type'),
                 reporeted_by=request.user,
             )
-            print('after form.reporeted_by ')
             formData.save()
-            print('saved')
             return redirect('incidentList')
     form = reportForm()
     context = {
@@ -42,7 +42,8 @@ def displayForm(request):
 
 @login_required
 def incidentList(request):
-    list = myForm.objects.all()
+
+    list = myForm.objects.filter(reporeted_by=request.user)
     context = {
         'incident_list': list,
         'title': 'Incident List',

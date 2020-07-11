@@ -1,6 +1,15 @@
 from django import forms
 from .models import myForm
-from django.forms.widgets import DateInput, TimeInput
+from django.forms.widgets import DateInput, TimeInput, Textarea
+from crispy_forms.helper import FormHelper
+from django.utils import timezone
+
+
+class MyTextarea(Textarea):
+    def __init__(self, attrs={}):
+        attrs.update({'cols': '70', 'rows': '20'})
+        super(MyTextarea, self).__init__(attrs)
+
 
 Location = (
     ('CHO', 'Corporate Head Office'),
@@ -38,4 +47,8 @@ class reportForm(forms.ModelForm):
         widgets = {
             'DateOfAcci': DateInput(attrs={'type': 'date'}),
             'TimeOfAcci': TimeInput(attrs={'type': 'time'}),
+            'Incident_desc': forms.Textarea(attrs={'rows': 2, 'cols': 15, 'placeholder': 'Description About Incident!...'}),
+            'incident_loc': forms.Textarea(attrs={'rows': 2, 'cols': 15, 'placeholder': 'Incident Location!...'}),
+            'suspected_cause': forms.Textarea(attrs={'rows': 2, 'cols': 15, 'placeholder': 'Supected Cause Of Accident!...'}),
+            'immediate_act': forms.Textarea(attrs={'rows': 2, 'cols': 15, 'placeholder': 'Immediate Actions Taken By You!...'}),
         }

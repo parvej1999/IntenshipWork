@@ -3,6 +3,6 @@ from django.contrib.auth import urls as auth_urls
 from . import views
 
 urlpatterns = [
-    path('', include(auth_urls)),
-    path('sign-up/', views.sign_up),
+    path('accounts/', include(auth_urls)),
+    path('', views.sign_up, name='signup'),
 ]

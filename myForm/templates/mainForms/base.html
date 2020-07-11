@@ -18,7 +18,10 @@
     html {
       margin: 0;
       padding: 0;
-      height: 100%;
+    }
+
+    a {
+      text-decoration: none;
     }
 
     div li {
@@ -31,6 +34,7 @@
 
     .sidebar {
       position: fixed;
+      height: 100%;
     }
 
     .menu li {
@@ -43,7 +47,6 @@
 
     .row .sidebar {
       margin-top: 10rem;
-      height: 100%;
     }
 
 
@@ -56,7 +59,7 @@
       width: 102%;
     }
 
-    .table-back {
+    .main-content {
       background-color: white;
       margin: 10px;
     }
@@ -66,6 +69,14 @@
       border-collapse: collapse;
     }
 
+    /* .col-md-10 {
+      overflow: hidden;
+    } */
+
+    .col-md-2 {
+      padding-bottom: 100%;
+      margin-bottom: -100%;
+    }
 
     table td,
     table th {
@@ -73,13 +84,17 @@
       width: 5rem;
       white-space: nowrap;
     }
-
-    /* #th-custom-width {
-      width: 15rem;
-    } */
   </style>
 
-  <title>Hello, world!</title>
+  <title>
+    {% if title %}
+    {{title}}
+    {% else %}
+    Incident Management
+    {% endif %}
+
+  </title>
+
 </head>
 
 <body>
@@ -102,10 +117,10 @@
           </p>
           <div class="collapse" id="collapsemenu">
             <li>
-              <a class="text-muted " href="#">Report An
+              <a class="text-muted " href="{% url 'displayForm' %}">Report An
                 Incident</a><br>
               <a class="text-muted " href="#">Sent Incident</a><br>
-              <a class="text-muted " href="#">Incident List</a><br>
+              <a class="text-muted " href="{% url 'incidentList' %}">Incident List</a><br>
             </li>
           </div>
           <li class="text-muted ">Others</li>
@@ -114,20 +129,26 @@
         <br>
 
         <li><b>AUTHENTICATION</b></li>
-
         <div class="auth">
-          <li class='text-muted'>Logout</li>
+          {% if user.is_authenticated %}
+          <li><a class='text-muted' href="{% url 'logout' %}">Logout</a></li>
           <br>
-          <li class='text-muted'>Register</li>
-
+          {% else %}
+          <li><a class='text-muted' href="{% url 'login' %}">Login</a></li>
+          <br>
+          <li><a class='text-muted' href="{% url 'signup' %}">Sign Up</a></li>
+          {% endif %}
         </div>
+      </div>
+      <div class="">
+
       </div>
 
     </div>
 
-    <div class="col-md-10  border-left bg-light">
-      <div class="main border-bottom ">
-        <table class="table table-borderless">
+    <div class="col-md-10 bg-light">
+      <div class="main">
+        <table class="table table-borderless border-bottom">
           <tbody>
             <tr>
               <td></td>
@@ -144,11 +165,11 @@
                   <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
                       <li class="nav-item active">
-                        <a class="nav-link" href="#"><i class="far fa-bell"></i> <span
+                        <a class="nav-link" href="#"><i class="fa fa-bell-o fa-2x" aria-hidden="true"></i><span
                             class="sr-only">(current)</span></a>
                       </li>
                       <li class="nav-item ml-4">
-                        <a class="nav-link" href="#">Link</a>
+                        <a class="nav-link" href="#"><i class="fa fa-cog fa-2x" aria-hidden="true"></i></a>
                       </li>
                       <li class="nav-item shadow-sm rounded-pill bg-white pl-4 pr-4 ml-4 dropdown">
                         <a class="nav-link dropdown-toggle" a href="#" id="navbarDropdown" data-toggle="dropdown"
@@ -164,8 +185,10 @@
                       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                     </form>
+                    <label for="profile" class="pt-4">
+                      <p>&nbsp&nbspHello, {{user}}</p>
+                    </label>
                   </div>
-                  <hr>
                 </nav>
               </td>
             </tr>
@@ -191,5 +214,6 @@
   integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
   integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+
 
 </html>
