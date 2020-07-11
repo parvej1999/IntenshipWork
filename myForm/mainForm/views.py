@@ -31,6 +31,20 @@ def displayForm(request):
             print('after form.reporeted_by ')
             formData.save()
             print('saved')
-            return redirect('register')
+            return redirect('incidentList')
     form = reportForm()
-    return render(request, 'mainForms/form.html', {'form': form})
+    context = {
+        'form': form,
+        'title': 'Incident Report Form',
+    }
+    return render(request, 'mainForms/form.html', context)
+
+
+@login_required
+def incidentList(request):
+    list = myForm.objects.all()
+    context = {
+        'incident_list': list,
+        'title': 'Incident List',
+    }
+    return render(request, 'mainForms/IncidentList.html', context)

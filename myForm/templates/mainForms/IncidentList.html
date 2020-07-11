@@ -1,0 +1,40 @@
+{% extends "mainForms/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="p-4 table-back">
+    <h4>Incident List</h4>
+    <small>Apps&nbsp/&nbspIncident List</small>
+
+    <table
+        class="table table-striped table-responsive-sm table-responsive-md table-responsive-lg table-bordered table-hover table-custom">
+        <thead>
+            <tr>
+                <th scope="col">Incident No.</th>
+                <th scope="col">Location</th>
+                <th scope="col">Incident Location</th>
+                <th scope="col">Description</th>
+                <th scope="col">Date</th>
+                <th scope="col">Time</th>
+                <th scope="col">Severity</th>
+                <th scope="col">Cause</th>
+                <th scope="col">Immediate Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for incident in incident_list %}
+            <tr>
+                <th scope="row">{{forloop.counter}}</th>
+                <td>{{incident.Location}}</td>
+                <td>{{incident.incident_loc}}</td>
+                <td>{{incident.Incident_desc}}</td>
+                <td>{{incident.DateOfAcci}}</td>
+                <td>{{incident.TimeOfAcci}}</td>
+                <td>{{incident.initial_seve}}</td>
+                <td>{{incident.suspected_cause}}</td>
+                <td>{{incident.immediate_act}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

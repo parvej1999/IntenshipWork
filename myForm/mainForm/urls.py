@@ -4,4 +4,5 @@ from . import views
 
 urlpatterns = [
     path('', views.displayForm, name='displayForm'),
+    path('incident-list/', views.incidentList, name='incidentList')
 ]
