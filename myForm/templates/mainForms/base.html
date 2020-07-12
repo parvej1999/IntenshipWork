@@ -186,7 +186,11 @@
                       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                     </form>
                     <label for="profile" class="pt-4">
+                      {% if user.is_authenticated %}
                       <p>&nbsp&nbspHello, {{user}}</p>
+                      {% else %}
+                      <p>&nbsp&nbspHello, Guest</p>
+                      {% endif %}
                     </label>
                   </div>
                 </nav>
